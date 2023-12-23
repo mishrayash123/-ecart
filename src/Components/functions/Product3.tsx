@@ -20,7 +20,9 @@ interface Products {
 }
 
 function Product3() {
-  const [products, setproducts] = useState<Products[]>([]);
+  // const [products, setproducts] = useState<Products[]>([]);
+
+  const products = ['dsdk','dskjdk','djkdj','sjdj']
 
   const options = {
     method: 'GET',
@@ -53,8 +55,9 @@ function Product3() {
  
 
     return (
-      <div>
-       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 pt-3 gap-8 w-3/4" role="group">
+      <div className='m-5'>
+         <h2 className="font-bold text-center text-2xl">Top Cosmetics</h2>
+       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 pt-3  w-3/4" role="group">
          {
           products.map(products =>(
             <a href=''>
@@ -92,8 +95,7 @@ function Product3() {
           </Typography>
         </div>
         <Typography color="gray" placeholder="k">
-          Enter a freshly updated and thoughtfully furnished peaceful home
-          surrounded by ancient trees, stone walls, and open meadows.
+          Enter a freshly updated and thoughtfully furnished
         </Typography>
         {/* <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
         </div> */}
