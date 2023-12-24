@@ -22,7 +22,7 @@ interface Products {
 function Product3() {
   // const [products, setproducts] = useState<Products[]>([]);
 
-  const products = ['dsdk','dskjdk','djkdj','sjdj']
+  const products = ['dsdk','dskjdk','djkdj','sjdj','k','k']
 
   const options = {
     method: 'GET',
@@ -55,9 +55,9 @@ function Product3() {
  
 
     return (
-      <div className='m-5'>
+      <div className='my-3'>
          <h2 className="font-bold text-center text-2xl">Top Cosmetics</h2>
-       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 pt-3  w-3/4" role="group">
+       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3  w-[90%]" role="group">
          {
           products.map(products =>(
             <a href=''>

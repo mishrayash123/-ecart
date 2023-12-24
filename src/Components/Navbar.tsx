@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
-import Login from './Login';
 import { Navbar, MobileNav, Typography, Button, IconButton } from '@material-tailwind/react';
 
 interface NavbarProps {}
 
 const NavbarComponent: React.FC<NavbarProps> = () => {
   const [openNav, setOpenNav] = useState(false);
-  const [showLoginDialog, setShowLoginDialog] = useState(false);
-
-  const openLoginDialog = () => {
-    setShowLoginDialog(true);
-  };
-
-  const closeLoginDialog = () => {
-    setShowLoginDialog(false);
-  };
+  
 
   const navList = (
     <ul className="flex flex-col gap-2 lg:flex-row lg:items-center">
@@ -49,10 +40,9 @@ const NavbarComponent: React.FC<NavbarProps> = () => {
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
-        <Typography as="a"  className="cursor-pointer py-1.5 font-medium " placeholder="jsjx" onClick={openLoginDialog}>
+        <Typography as="a" href='/login' className="cursor-pointer py-1.5 font-medium " placeholder="jsjx" >
           Profile
         </Typography>
-        {showLoginDialog && <Login onClose={closeLoginDialog} />}
           {/* <Button variant="gradient" size="sm" className="hidden lg:inline-block" placeholder="jsjx">
             Sign In
           </Button> */}
@@ -90,10 +80,9 @@ const NavbarComponent: React.FC<NavbarProps> = () => {
       </div>
       <MobileNav open={openNav} className="bg-blue-600">
         <div className="container mx-auto">{navList}</div>
-        <Typography as="a" className="cursor-pointer py-1.5 font-medium" placeholder="jsjx" onClick={openLoginDialog}>
+        <Typography as="a" href='/login' className="cursor-pointer py-1.5 font-medium" placeholder="jsjx" >
           Profile
         </Typography>
-        {showLoginDialog && <Login onClose={closeLoginDialog} />}
       </MobileNav>
     </Navbar>
   );
