@@ -8,11 +8,42 @@ import {
     Tooltip,
     IconButton,
   } from "@material-tailwind/react";
+  import '../css/product.css'
+  import React, { useState, useEffect } from 'react';
+  import axios from 'axios';
+
+interface Products {
+  price: number;
+  id: number;
+  image: string;
+  title : string; 
+}
 
 
 
 function Deals() {
-    const products = ['dsdk','dskjdk','djkdj','sjdj','f','f']
+  const [products, setproducts] = useState<Products[]>([]);
+
+
+  const options = {
+    method: 'GET',
+  url: 'https://fakestoreapi.com/products/category/electronics',
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.request(options);
+      setproducts(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    
+    fetchData();
+  }, []);
+
 
     return (
       <div>
@@ -29,14 +60,14 @@ function Deals() {
                     </span>
                 </h1>
                 <p className="text-sm sm:text-base text-gray-700 dark:text-white">
-                    Dimension of reality that makes change possible and understandable. An indefinite and homogeneous environment in which natural events and human existence take place.
+                   Get 60% off on all electronics items Brands (Boat, Noise , Firebolt , Apple , Samsung , LG..etc) . All offers are valid to 10hr.
                 </p>
                 <div className="flex mt-8">
                     <a href="#" className="uppercase py-2 px-4 rounded-lg bg-pink-500 border-2 border-transparent text-white text-md mr-4 hover:bg-pink-400">
-                        Get started
+                        Buy Now
                     </a>
                     <a href="#" className="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-pink-500 text-pink-500 dark:text-white hover:bg-pink-500 hover:text-white text-md">
-                        Read more
+                        More Items
                     </a>
                 </div>
             </div>
@@ -60,25 +91,30 @@ function Deals() {
     </div>
 </section>
 <div className='my-3'>
-        <h2 className="font-bold text-center text-2xl">Top Deals</h2>
-       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 w-[90%]" role="group">
+        <h2 className="font-bold text-center text-2xl">Top Deals (Ends in : 23:30:20)</h2>
+        <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 w-[90%]" role="group">
          {
           products.map(products =>(
             <a href='/product'>
-            <Card className="w-3/4 max-w-[26rem] shadow-lg" placeholder="k">
+            <Card className="cardwid shadow-lg m-2" placeholder="k">
       <CardHeader floated={false} color="blue-gray" placeholder="k">
         <img
-          src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          src={products.image}
           alt="ui/ux review check"
-          className='rounded-lg'
+          className='rounded-lg wid'
         />
       </CardHeader>
       <CardBody placeholder="k">
-        <div className="mb-3 flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className="font-medium" placeholder="k">
-            Wooden House, Florida
+        <div className="mb-3 ">
+          <Typography variant="h6" color="blue-gray" className="font-medium" placeholder="k">
+           {products.title.slice(0,20)}
           </Typography>
-          <Typography
+        </div>
+        <div className='flex items-center justify-between'>
+        <Typography color="gray" className=' text-black font-bold' placeholder="k">
+          {products.price} &#8377;
+        </Typography>
+        <Typography
           placeholder="k"
             color="blue-gray"
             className="flex items-center gap-1.5 font-normal"
@@ -98,9 +134,6 @@ function Deals() {
             4.5
           </Typography>
         </div>
-        <Typography color="gray" placeholder="k">
-          Enter a freshly updated and thoughtfully .
-        </Typography>
         {/* <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
         </div> */}
       </CardBody>

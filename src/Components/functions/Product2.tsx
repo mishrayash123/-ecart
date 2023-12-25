@@ -10,71 +10,81 @@ import {
   Tooltip,
   IconButton,
 } from "@material-tailwind/react";
+import '../css/product.css'
 
 interface Products {
-  product_price: number;
-  asin: string;
-  product_photo: string;
-  product_title : string;
-  product_star_rating:string;
+  price: number;
+  id: number;
+  image: string;
+  title : string; 
 }
 
 function Product2() {
-  // const [products, setproducts] = useState<Products[]>([]);
+  const [products1, setproducts1] = useState<Products[]>([]);
+  const [products2, setproducts2] = useState<Products[]>([]);
 
-  const products = ['dsdk','dskjdk','djkdj','sjdj','j','k']
 
-  const options = {
+  const options1 = {
     method: 'GET',
-  url: 'https://real-time-amazon-data.p.rapidapi.com/search',
-  params: {
-    query: 'Phone',
-    page: '1',
-    country: 'US',
-    category_id: 'aps'
-  },
-  headers: {
-    'X-RapidAPI-Key': 'e8d49997e3mshc19c5745cb99d78p1bb5a1jsnedfa2627415c',
-    'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
-  }
+  url: `https://fakestoreapi.com/products/category/men's clothing`,
   };
 
-  const fetchData = async () => {
-    // try {
-    //   const response = await axios.request(options);
-    //   setproducts(response.data.data.products);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+  const fetchData1 = async () => {
+    try {
+      const response = await axios.request(options1);
+      setproducts1(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const options2 = {
+    method: 'GET',
+  url: `https://fakestoreapi.com/products/category/jewelery`,
+  };
+
+  const fetchData2 = async () => {
+    try {
+      const response = await axios.request(options2);
+      setproducts2(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   useEffect(() => {
-    
-    fetchData();
+    fetchData2();
+    fetchData1();
   }, []);
  
 
     return (
-      <div className='my-3'>
-         <h2 className="font-bold text-center text-2xl">Top Wears</h2>
-       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3  w-[90%]" role="group">
+      <div className='my-3 flex flex-row justify-center'>
+        <div>
+        <h2 className="font-bold text-center text-2xl">Men's clothing</h2>
+       <div className="container  grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-3 " role="group">
          {
-          products.map(products =>(
+          products1.slice(0,3).map(products =>(
             <a href='/product'>
-            <Card className="w-3/4 max-w-[26rem] shadow-lg" placeholder="k">
+            <Card className="cardwid1 shadow-lg m-2" placeholder="k">
       <CardHeader floated={false} color="blue-gray" placeholder="k">
         <img
-          src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          src={products.image}
           alt="ui/ux review check"
-          className='rounded-lg'
+          className='rounded-lg wid'
         />
       </CardHeader>
       <CardBody placeholder="k">
-        <div className="mb-3 flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className="font-medium" placeholder="k">
-            Wooden House, Florida
+        <div className="mb-3 ">
+          <Typography variant="h6" color="blue-gray" className="font-medium" placeholder="k">
+           {products.title.slice(0,20)}
           </Typography>
-          <Typography
+        </div>
+        <div className='flex items-center justify-between'>
+        <Typography color="gray" className=' text-black font-bold' placeholder="k">
+          {products.price} &#8377;
+        </Typography>
+        <Typography
           placeholder="k"
             color="blue-gray"
             className="flex items-center gap-1.5 font-normal"
@@ -94,9 +104,6 @@ function Product2() {
             4.5
           </Typography>
         </div>
-        <Typography color="gray" placeholder="k">
-          Enter a freshly updated and thoughtfully furnished .
-        </Typography>
         {/* <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
         </div> */}
       </CardBody>
@@ -105,6 +112,60 @@ function Product2() {
           ))
          }
      </div>
+      </div>
+      <div>
+        <h2 className="font-bold text-center text-2xl">Jewelery</h2>
+       <div className="container  grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-3 " role="group">
+         {
+          products2.slice(0,3).map(products =>(
+            <a href='/product'>
+            <Card className="cardwid shadow-lg m-2" placeholder="k">
+      <CardHeader floated={false} color="blue-gray" placeholder="k">
+        <img
+          src={products.image}
+          alt="ui/ux review check"
+          className='rounded-lg wid'
+        />
+      </CardHeader>
+      <CardBody placeholder="k">
+        <div className="mb-3 ">
+          <Typography variant="h6" color="blue-gray" className="font-medium" placeholder="k">
+           {products.title.slice(0,20)}
+          </Typography>
+        </div>
+        <div className='flex items-center justify-between'>
+        <Typography color="gray" className=' text-black font-bold' placeholder="k">
+          {products.price} &#8377;
+        </Typography>
+        <Typography
+          placeholder="k"
+            color="blue-gray"
+            className="flex items-center gap-1.5 font-normal"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="-mt-0.5 h-5 w-5 text-yellow-700"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                clipRule="evenodd"
+              />
+            </svg>
+            4.5
+          </Typography>
+        </div>
+        {/* <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
+        </div> */}
+      </CardBody>
+    </Card>
+    </a>
+          ))
+         }
+     </div>
+      </div>
       </div>
     );
   }

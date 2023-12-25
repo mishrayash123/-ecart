@@ -10,44 +10,34 @@ import {
   Tooltip,
   IconButton,
 } from "@material-tailwind/react";
+import '../css/product.css'
 
 interface Products {
-  product_price: number;
-  asin: string;
-  product_photo: string;
-  product_title : string;
-  product_star_rating:string;
+  price: number;
+  id: number;
+  image: string;
+  title : string; 
 }
 
-
 function Products() {
- // const [products, setproducts] = useState<Products[]>([]);
+  const [products, setproducts] = useState<Products[]>([]);
+  const [Search,setSearch] = useState("")
 
- const products = ['dsdk','dskjdk','djkdj','sjdj','j','k']
 
- const options = {
-   method: 'GET',
- url: 'https://real-time-amazon-data.p.rapidapi.com/search',
- params: {
-   query: 'Phone',
-   page: '1',
-   country: 'US',
-   category_id: 'aps'
- },
- headers: {
-   'X-RapidAPI-Key': 'e8d49997e3mshc19c5745cb99d78p1bb5a1jsnedfa2627415c',
-   'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
- }
- };
+  const options = {
+    method: 'GET',
+  url: 'https://fakestoreapi.com/products/',
+  };
 
- const fetchData = async () => {
-   // try {
-   //   const response = await axios.request(options);
-   //   setproducts(response.data.data.products);
-   // } catch (error) {
-   //   console.error(error);
-   // }
- }
+  const fetchData = async () => {
+    try {
+      const response = await axios.request(options);
+      setproducts(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 
  useEffect(() => {
    
@@ -59,17 +49,15 @@ function Products() {
 <div className=" flex justify-center items-center">
 	<div className="container mx-auto bg-blue-600 p-14">
 		<form>
-			<h1 className="text-center font-bold text-white text-4xl">Find the perfect domain name</h1>
-				<p className="mx-auto font-normal text-sm my-6 max-w-lg">Enter your select domain name and choose any
-					extension name in the next step (choose between .com, .online, .tech, .site, .net, and more)</p>
+			<h1 className="text-center font-bold text-white text-4xl mb-5">Search bar is disabled due to minimum products</h1>
 				<div className="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
-					<input className="text-base text-gray-400 flex-grow outline-none px-2 " type="text" placeholder="Search your domain name" />
+					<input className="text-base text-gray-400 flex-grow outline-none px-2 " type="text" placeholder="Search your product's name" />
 					<div className="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
 						<select id="Com" className="text-base text-gray-800 outline-none border-2 px-4 py-2 rounded-lg">
-            <option value="com" selected>com</option>
-            <option value="net">net</option>
-            <option value="org">org</option>
-            <option value="io">io</option>
+            <option value="com" selected>electronics</option>
+            <option value="net">jewelery</option>
+            <option value="org">men's clothing</option>
+            <option value="io">women's clothing</option>
           </select>
 						<button className="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-thin">Search</button>
 					</div>
@@ -77,24 +65,29 @@ function Products() {
 		</form>
 	</div>
 </div>
-       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 my-5 w-[90%]" role="group">
+<div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 w-[90%]" role="group">
          {
           products.map(products =>(
             <a href='/product'>
-            <Card className="w-3/4 max-w-[26rem] shadow-lg" placeholder="k">
+            <Card className="cardwid shadow-lg m-2" placeholder="k">
       <CardHeader floated={false} color="blue-gray" placeholder="k">
         <img
-          src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          src={products.image}
           alt="ui/ux review check"
-          className='rounded-lg'
+          className='rounded-lg wid'
         />
       </CardHeader>
       <CardBody placeholder="k">
-        <div className="mb-3 flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className="font-medium" placeholder="k">
-            Wooden House, Florida
+        <div className="mb-3 ">
+          <Typography variant="h6" color="blue-gray" className="font-medium" placeholder="k">
+           {products.title.slice(0,20)}
           </Typography>
-          <Typography
+        </div>
+        <div className='flex items-center justify-between'>
+        <Typography color="gray" className=' text-black font-bold' placeholder="k">
+          {products.price} &#8377;
+        </Typography>
+        <Typography
           placeholder="k"
             color="blue-gray"
             className="flex items-center gap-1.5 font-normal"
@@ -114,9 +107,6 @@ function Products() {
             4.5
           </Typography>
         </div>
-        <Typography color="gray" placeholder="k">
-          Enter a freshly updated and thoughtfully furnished .
-        </Typography>
         {/* <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
         </div> */}
       </CardBody>
