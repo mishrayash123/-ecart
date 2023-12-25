@@ -19,45 +19,65 @@ interface Products {
   product_star_rating:string;
 }
 
-function Product1() {
-  // const [products, setproducts] = useState<Products[]>([]);
 
-  const products = ['dsdk','dskjdk','djkdj','sjdj','f','f']
+function Products() {
+ // const [products, setproducts] = useState<Products[]>([]);
 
-  const options = {
-    method: 'GET',
-  url: 'https://real-time-amazon-data.p.rapidapi.com/search',
-  params: {
-    query: 'Phone',
-    page: '1',
-    country: 'US',
-    category_id: 'aps'
-  },
-  headers: {
-    'X-RapidAPI-Key': 'e8d49997e3mshc19c5745cb99d78p1bb5a1jsnedfa2627415c',
-    'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
-  }
-  };
+ const products = ['dsdk','dskjdk','djkdj','sjdj','j','k']
 
-  const fetchData = async () => {
-    // try {
-    //   const response = await axios.request(options);
-    //   setproducts(response.data.data.products);
-    // } catch (error) {
-    //   console.error(error);
-    // }
-  }
+ const options = {
+   method: 'GET',
+ url: 'https://real-time-amazon-data.p.rapidapi.com/search',
+ params: {
+   query: 'Phone',
+   page: '1',
+   country: 'US',
+   category_id: 'aps'
+ },
+ headers: {
+   'X-RapidAPI-Key': 'e8d49997e3mshc19c5745cb99d78p1bb5a1jsnedfa2627415c',
+   'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
+ }
+ };
 
-  useEffect(() => {
-    
-    fetchData();
-  }, []);
- 
+ const fetchData = async () => {
+   // try {
+   //   const response = await axios.request(options);
+   //   setproducts(response.data.data.products);
+   // } catch (error) {
+   //   console.error(error);
+   // }
+ }
+
+ useEffect(() => {
+   
+   fetchData();
+ }, []);  
 
     return (
-      <div className='my-3'>
-        <h2 className="font-bold text-center text-2xl">Top Electronics</h2>
-       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 w-[90%]" role="group">
+      <div>
+<div className=" flex justify-center items-center">
+	<div className="container mx-auto bg-blue-600 p-14">
+		<form>
+			<h1 className="text-center font-bold text-white text-4xl">Find the perfect domain name</h1>
+				<p className="mx-auto font-normal text-sm my-6 max-w-lg">Enter your select domain name and choose any
+					extension name in the next step (choose between .com, .online, .tech, .site, .net, and more)</p>
+				<div className="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
+					<input className="text-base text-gray-400 flex-grow outline-none px-2 " type="text" placeholder="Search your domain name" />
+					<div className="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
+						<select id="Com" className="text-base text-gray-800 outline-none border-2 px-4 py-2 rounded-lg">
+            <option value="com" selected>com</option>
+            <option value="net">net</option>
+            <option value="org">org</option>
+            <option value="io">io</option>
+          </select>
+						<button className="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-thin">Search</button>
+					</div>
+				</div>
+		</form>
+	</div>
+</div>
+       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 my-5 w-[90%]" role="group">
          {
           products.map(products =>(
             <a href='/product'>
@@ -95,7 +115,7 @@ function Product1() {
           </Typography>
         </div>
         <Typography color="gray" placeholder="k">
-          Enter a freshly updated and thoughtfully .
+          Enter a freshly updated and thoughtfully furnished .
         </Typography>
         {/* <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
         </div> */}
@@ -109,5 +129,4 @@ function Product1() {
     );
   }
   
-  export default Product1;
-  
+  export default Products;

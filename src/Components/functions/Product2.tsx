@@ -60,7 +60,7 @@ function Product2() {
        <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3  w-[90%]" role="group">
          {
           products.map(products =>(
-            <a href=''>
+            <a href='/product'>
             <Card className="w-3/4 max-w-[26rem] shadow-lg" placeholder="k">
       <CardHeader floated={false} color="blue-gray" placeholder="k">
         <img

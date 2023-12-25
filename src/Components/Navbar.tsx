@@ -15,17 +15,17 @@ const NavbarComponent: React.FC<NavbarProps> = () => {
         </a>
       </Typography>
       <Typography as="li" variant="small" color="blue-gray" className="p-1 font-medium" placeholder="jsjx">
-        <a href="#" className="flex items-center">
+        <a href="/products" className="flex items-center">
           Products
         </a>
       </Typography>
       <Typography as="li" variant="small" color="blue-gray" className="p-1 font-medium" placeholder="jsjx">
-        <a href="#" className="flex items-center">
+        <a href="/cart" className="flex items-center">
           Cart
         </a>
       </Typography>
       <Typography as="li" variant="small" color="blue-gray" className="p-1 font-medium" placeholder="jsjx">
-        <a href="#" className="flex items-center">
+        <a href="/deals" className="flex items-center">
           Deals
         </a>
       </Typography>

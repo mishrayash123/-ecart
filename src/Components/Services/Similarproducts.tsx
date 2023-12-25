@@ -19,7 +19,7 @@ interface Products {
   product_star_rating:string;
 }
 
-function Product1() {
+function Similarproducts() {
   // const [products, setproducts] = useState<Products[]>([]);
 
   const products = ['dsdk','dskjdk','djkdj','sjdj','f','f']
@@ -56,7 +56,7 @@ function Product1() {
 
     return (
       <div className='my-3'>
-        <h2 className="font-bold text-center text-2xl">Top Electronics</h2>
+        <h2 className="font-bold text-center text-2xl">Similar Products</h2>
        <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 w-[90%]" role="group">
          {
           products.map(products =>(
@@ -109,5 +109,5 @@ function Product1() {
     );
   }
   
-  export default Product1;
+  export default Similarproducts;
   
