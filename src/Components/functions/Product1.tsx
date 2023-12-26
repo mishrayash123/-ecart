@@ -11,6 +11,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import '../css/product.css'
+import {useNavigate} from 'react-router-dom'
 
 interface Products {
   price: number;
@@ -21,6 +22,7 @@ interface Products {
 
 function Product1() {
   const [products, setproducts] = useState<Products[]>([]);
+  const nav = useNavigate();
 
 
   const options = {
@@ -49,7 +51,11 @@ function Product1() {
        <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 w-[90%]" role="group">
          {
           products.map(products =>(
-            <a href='/product'>
+            <a href='' onClick={
+              (e) => {
+                nav('/product', { state: { id: products.id } });
+              }
+          }>
             <Card className="cardwid shadow-lg m-2" placeholder="k">
       <CardHeader floated={false} color="blue-gray" placeholder="k">
         <img

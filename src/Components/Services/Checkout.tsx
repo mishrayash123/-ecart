@@ -1,9 +1,47 @@
+import { useLocation } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
+interface Products {
+    price: number;
+    id: number;
+    image: string;
+    title: string;
+    category: string;
+    description: string
+}
+
 
 function Checkout() {
+    const [products, setproducts] = useState<Products[]>([]);
+    const [quantity,setquantity] = useState(1)
+    const location = useLocation();
+    const nav = useNavigate();
+
+    const options1 = {
+        method: 'GET',
+        url: `https://fakestoreapi.com/products`,
+    };
+
+    const fetchData1 = async () => {
+        try {
+            const response = await axios.request(options1);
+            setproducts(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    useEffect(() => {
+        fetchData1();
+    }, []);
   
     return (
       <div>
         <div className=" py-8">
+        {
+                    products.filter((e) => (e.id == location.state.id)).map(products => (
     <div className="container mx-auto px-4">
         <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
         <div className="flex flex-col md:flex-row gap-4">
@@ -22,19 +60,33 @@ function Checkout() {
                             <tr>
                                 <td className="py-4">
                                     <div className="flex items-center">
-                                        <img className="h-16 w-16 mr-4" src="https://via.placeholder.com/150" alt="Product image" />
-                                        <span className="font-semibold">Product name</span>
+                                        <img className="h-16 w-16 mr-4" src={products.image} alt="Product image" />
+                                        <span className="font-semibold">{products.title.slice(0,15)}</span>
                                     </div>
                                 </td>
-                                <td className="py-4">$19.99</td>
+                                <td className="py-4 font-bold">{products.price} &#8377;</td>
                                 <td className="py-4">
                                     <div className="flex items-center">
-                                        <button className="border rounded-md py-2 px-4 mr-2">-</button>
-                                        <span className="text-center w-8">1</span>
-                                        <button className="border rounded-md py-2 px-4 ml-2">+</button>
+                                        <button className="border rounded-md py-2 px-4 mr-2" onClick={
+                                (e) => {
+                                    if(quantity<=1){
+                                        setquantity(1)  
+                                    }
+                                    else{
+                                        setquantity(quantity-1)
+                                    }
+                                    
+                                }
+                            }>-</button>
+                                        <span className="text-center w-8">{quantity}</span>
+                                        <button className="border rounded-md py-2 px-4 ml-2"onClick={
+                                (e) => {
+                                    setquantity(quantity+1)
+                                }
+                            }>+</button>
                                     </div>
                                 </td>
-                                <td className="py-4">$19.99</td>
+                                <td className="py-4">{quantity*products.price} &#8377;</td>
                             </tr>
                         </tbody>
                     </table>
@@ -45,26 +97,28 @@ function Checkout() {
                     <h2 className="text-lg font-semibold mb-4">Summary</h2>
                     <div className="flex justify-between mb-2">
                         <span>Subtotal</span>
-                        <span>$19.99</span>
+                        <span>{quantity*products.price} &#8377;</span>
                     </div>
                     <div className="flex justify-between mb-2">
                         <span>Taxes</span>
-                        <span>$1.99</span>
+                        <span>10.99 &#8377;</span>
                     </div>
                     <div className="flex justify-between mb-2">
                         <span>Shipping</span>
-                        <span>$0.00</span>
+                        <span>50.00 &#8377;</span>
                     </div>
                     <hr className="my-2" />
                     <div className="flex justify-between mb-2">
                         <span className="font-semibold">Total</span>
-                        <span className="font-semibold">$21.98</span>
+                        <span className="font-semibold">{quantity*products.price+10.99+50.00} &#8377;</span>
                     </div>
                     {/* <button className="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button> */}
                 </div>
             </div>
         </div>
     </div>
+    ))
+        }
     <div className=" dark:bg-gray-900 m-5">
     <div className="w-full  mx-auto p-8">
         <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border dark:border-gray-700">
@@ -125,7 +179,11 @@ function Checkout() {
             </div>
 
             <div className="mt-8 flex justify-end">
-                <button className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-700 dark:bg-teal-600 dark:text-white dark:hover:bg-teal-900">Place Order</button>
+                <button className="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-700 dark:bg-teal-600 dark:text-white dark:hover:bg-teal-900"onClick={
+              (e) => {
+                nav('/order', { state: { id: location.state.id } });
+              }
+          }>Place Order</button>
             </div>
         </div>
     </div>

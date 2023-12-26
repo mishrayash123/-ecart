@@ -11,6 +11,7 @@ import {
   import '../css/product.css'
   import React, { useState, useEffect } from 'react';
   import axios from 'axios';
+  import {useNavigate} from 'react-router-dom'
 
 interface Products {
   price: number;
@@ -23,6 +24,7 @@ interface Products {
 
 function Deals() {
   const [products, setproducts] = useState<Products[]>([]);
+  const nav = useNavigate();
 
 
   const options = {
@@ -95,7 +97,11 @@ function Deals() {
         <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 pt-3 w-[90%]" role="group">
          {
           products.map(products =>(
-            <a href='/product'>
+            <a href='' onClick={
+              (e) => {
+                nav('/product', { state: { id: products.id } });
+              }
+          }>
             <Card className="cardwid shadow-lg m-2" placeholder="k">
       <CardHeader floated={false} color="blue-gray" placeholder="k">
         <img
