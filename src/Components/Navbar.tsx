@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, MobileNav, Typography, Button, IconButton } from '@material-tailwind/react';
+import Logo from "./Images/logoecart.png"
 
 interface NavbarProps {}
 
@@ -35,9 +36,13 @@ const NavbarComponent: React.FC<NavbarProps> = () => {
   return (
     <Navbar className="mx-auto w-full px-4 py-2 lg:px-8 lg:py-4 bg-blue-600 text-white" placeholder="jsjx">
       <div className="container mx-auto flex items-center justify-between">
-        <Typography as="a" href="/" className="cursor-pointer py-1.5 font-medium text-lg" placeholder="jsjx">
-          E-Cart
-        </Typography>
+        <a href="/" >
+        <img
+          src={Logo}
+          alt="ui/ux review check"
+          className=' w-[70px] h-[50px]'
+        />
+        </a>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
         <Typography as="a" href='/login' className="cursor-pointer py-1.5 font-medium " placeholder="jsjx" >
