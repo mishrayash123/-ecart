@@ -111,7 +111,10 @@ function Product() {
                                         </div>
                                         
                                     </div>
-                                    <div className="mb-4">
+                                    {!(cat==="electronics" || cat==="jewelery")
+                                        &&(
+                                        <div>
+                                            <div className="mb-4">
                                         <span className="font-bold text-gray-700 dark:text-gray-300">Select Color:</span>
                                         <div className="flex items-center mt-2">
                                             <button className="w-6 h-6 rounded-full bg-gray-800 dark:bg-gray-200 mr-2"></button>
@@ -130,6 +133,9 @@ function Product() {
                                             <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">XXL</button>
                                         </div>
                                     </div>
+                                        </div>
+                                        )
+                                    }
                                     <div>
                                         <span className="font-bold text-gray-700 dark:text-gray-300">Product Description:</span>
                                         <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">{products.description}
