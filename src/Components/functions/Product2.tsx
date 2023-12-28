@@ -61,10 +61,10 @@ function Product2() {
  
 
     return (
-      <div className='my-3 flex flex-row justify-center'>
+      <div className='my-3 flex flex-row max-[640px]:flex-col max-[640px]:mx-auto max-[640px]:w-1/2 justify-center'>
         <div>
         <h2 className="font-bold text-center text-2xl">Men's clothing</h2>
-       <div className="container  grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-3 " role="group">
+       <div className="container  grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 pt-3 " role="group">
          {
           products1.slice(0,3).map(products =>(
             <a href='' onClick={
@@ -121,7 +121,7 @@ function Product2() {
       </div>
       <div>
         <h2 className="font-bold text-center text-2xl">Jewelery</h2>
-       <div className="container  grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-3 " role="group">
+       <div className="container  grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 pt-3 " role="group">
          {
           products2.slice(0,3).map(products =>(
             <a href='' onClick={
