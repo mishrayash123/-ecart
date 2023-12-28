@@ -7,9 +7,9 @@ function Footer() {
     return (
       <div >
 <footer
-  className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left mt-5">
+  className="bg-blue-800 text-center text-white dark:bg-neutral-600 dark:text-neutral-200 lg:text-left mt-5">
   <div
-    className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
+    className="flex items-center justify-center border-b-2 border-blue-200 p-6 dark:border-neutral-500 lg:justify-between">
     <div className="mr-12 hidden lg:block">
       <span>Get connected with us on social networks:</span>
     </div>
@@ -17,7 +17,7 @@ function Footer() {
       <a href="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
+          className="h-4 w-4 text-white"
           fill="currentColor"
           viewBox="0 0 24 24">
           <path
@@ -27,7 +27,7 @@ function Footer() {
       <a href="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
+          className="h-4 w-4 text-white"
           fill="currentColor"
           viewBox="0 0 24 24">
           <path
@@ -37,7 +37,7 @@ function Footer() {
       <a href="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-5 w-5 text-white"
           fill="currentColor"
           viewBox="0 0 24 24">
           <path
@@ -49,7 +49,7 @@ function Footer() {
       <a href="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
+          className="h-4 w-4 text-white"
           fill="currentColor"
           viewBox="0 0 24 24">
           <path
@@ -59,7 +59,7 @@ function Footer() {
       <a href="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
+          className="h-4 w-4 text-white"
           fill="currentColor"
           viewBox="0 0 24 24">
           <path
@@ -69,7 +69,7 @@ function Footer() {
       <a href="#!" className="text-neutral-600 dark:text-neutral-200">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
+          className="h-4 w-4 text-white"
           fill="currentColor"
           viewBox="0 0 24 24">
           <path
@@ -98,19 +98,19 @@ function Footer() {
           Products
         </h6>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white dark:text-neutral-200"
             >Women's clothing</a>
         </p>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white dark:text-neutral-200"
             >Men's clothing</a>
         </p>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white dark:text-neutral-200"
             >Jewelery</a>
         </p>
         <p>
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white dark:text-neutral-200"
             >Electronics</a>
         </p>
       </div>
@@ -120,11 +120,11 @@ function Footer() {
           Useful links
         </h6>
         <p className="mb-4">
-          <a href="/products" className="text-neutral-600 dark:text-neutral-200"
+          <a href="/products" className="text-white dark:text-neutral-200"
             >Products</a>
         </p>
         <p className="mb-4">
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white dark:text-neutral-200"
             >Settings</a>
         </p>
         {/* <p className="mb-4">
@@ -132,7 +132,7 @@ function Footer() {
             >Orders</a>
         </p> */}
         <p>
-          <a href="#!" className="text-neutral-600 dark:text-neutral-200"
+          <a href="#!" className="text-white dark:text-neutral-200"
             >Help</a>
         </p>
       </div>
@@ -183,10 +183,10 @@ function Footer() {
       </div>
     </div>
   </div>
-  <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+  <div className="bg-blue-900 p-6 text-center dark:bg-neutral-700">
     <span>© 2024 Copyright:</span>
     <a
-      className="font-semibold text-neutral-600 dark:text-neutral-400"
+      className="font-semibold text-white dark:text-neutral-400"
       href="/"
       >E-Cart</a>
   </div>
